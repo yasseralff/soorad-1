@@ -71,10 +71,10 @@ export function SpotifyEmbed({ spotifyUrl, letterOpened }: SpotifyEmbedProps) {
       initial={{ opacity: 0, y: 12 }}
       animate={visible ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
       transition={{ duration: reduce ? 0 : 0.6, ease: 'easeOut' }}
-      className="mt-8 overflow-hidden rounded-xl"
+      className="flex flex-col gap-2 overflow-hidden rounded-xl"
       aria-label="Background music player"
     >
-      <div className="flex items-center gap-1.5 mb-2 px-1">
+      <div className="flex items-center gap-1.5 px-1">
         <Music2 className="size-3.5 text-muted-foreground" />
         <span className="text-xs text-muted-foreground font-serif tracking-wide">
           A song for this letter

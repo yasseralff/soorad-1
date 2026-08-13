@@ -7,11 +7,11 @@ export default function LetterNotFound() {
       <span className="inline-flex size-16 items-center justify-center rounded-full bg-secondary text-muted-foreground">
         <MailQuestion className="size-7" />
       </span>
-      <div>
+      <div className="flex flex-col gap-3">
         <h1 className="font-serif text-4xl font-medium text-foreground">
           This letter can&apos;t be found
         </h1>
-        <p className="mt-3 font-hand text-2xl text-muted-foreground">
+        <p className="font-hand text-2xl text-muted-foreground">
           The code may be wrong, or the letter may have been removed.
         </p>
       </div>

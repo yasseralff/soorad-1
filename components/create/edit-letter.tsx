@@ -84,7 +84,7 @@ export function EditLetter({
           rows={9}
           className="input resize-y font-hand text-xl leading-relaxed"
         />
-        <span className="mt-1 self-end text-xs text-muted-foreground">
+        <span className="self-end text-xs text-muted-foreground">
           {body.length}/{MAX_BODY}
         </span>
       </Field>
