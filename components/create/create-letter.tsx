@@ -89,7 +89,7 @@ export function CreateLetter() {
           rows={9}
           className="input resize-y font-hand text-xl leading-relaxed"
         />
-        <span className="mt-1 self-end text-xs text-muted-foreground">
+        <span className="self-end text-xs text-muted-foreground">
           {body.length}/{MAX_BODY}
         </span>
       </Field>
@@ -161,7 +161,7 @@ export function CreateLetter() {
       <button
         type="submit"
         disabled={isPending}
-        className="inline-flex items-center justify-center gap-2 self-start rounded-full bg-primary px-8 py-4 font-serif text-lg text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-60"
+        className="inline-flex items-center cursor-pointer justify-center gap-2 font-medium self-start rounded-full bg-primary px-8 py-4 font-serif text-lg text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-60"
       >
         {isPending ? 'Sealing…' : 'Seal the letter'}
       </button>
@@ -203,11 +203,11 @@ function CreatedView({ result, origin }: { result: Result; origin: string }) {
   return (
     <div className="flex flex-col items-center gap-8 text-center">
       <SealMark className="size-16" />
-      <div>
+      <div className="flex flex-col gap-2">
         <h2 className="font-serif text-3xl font-medium text-foreground">
           Your letter has been sealed.
         </h2>
-        <p className="mt-2 text-muted-foreground">
+        <p className="text-muted-foreground">
           Share the reader link or code. Keep the creator link private.
         </p>
       </div>
@@ -245,7 +245,7 @@ function CreatedView({ result, origin }: { result: Result; origin: string }) {
         <button
           type="button"
           onClick={() => setQrOpen(true)}
-          className="mt-1 inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 font-serif text-sm text-foreground transition-colors hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 font-serif text-sm text-foreground transition-colors hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
           <QrCode className="size-4" />
           Show QR code
@@ -305,7 +305,7 @@ function ModeButton({
       type="button"
       onClick={onClick}
       className={cn(
-        'inline-flex flex-1 items-center justify-center gap-2 rounded-xl border px-4 py-3 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+        'inline-flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl border px-4 py-3 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
         active
           ? 'border-primary bg-primary text-primary-foreground'
           : 'border-border text-muted-foreground hover:bg-secondary hover:text-foreground',

@@ -6,9 +6,11 @@ import { SealMark } from '@/components/seal-mark'
 export function TopBar({
   backHref = '/',
   backLabel = 'Back',
+  showLogo = true,
 }: {
   backHref?: string
   backLabel?: string
+  showLogo?: boolean
 }) {
   return (
     <header className="grid w-full grid-cols-3 items-center">
@@ -23,6 +25,7 @@ export function TopBar({
       </div>
       
       <div className="justify-self-center">
+        {showLogo && (
         <Link
           href="/"
           aria-label="Go to home"
@@ -30,6 +33,7 @@ export function TopBar({
         >
           <SealMark className="size-9 shadow-sm" />
         </Link>
+        )}
       </div>
 
       <div className="justify-self-end">
