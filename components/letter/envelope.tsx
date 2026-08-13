@@ -105,7 +105,7 @@ export function Envelope({
       </motion.button>
 
       {!opening ? (
-        <div className="flex flex-col items-center gap-1 text-center">
+        <div className="flex cursor-pointer flex-col items-center gap-1 text-center">
           <p className="font-serif text-lg text-foreground">
             A letter from {letter.sender}
           </p>
