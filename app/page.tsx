@@ -23,7 +23,7 @@ export default function HomePage() {
               </h1>
               <p className="max-w-md text-pretty font-hand text-2xl leading-relaxed text-muted-foreground">
                 Write a beautiful, handwritten letter and send it with a private code
-                or link. No accounts. No noise. Just the words.
+                or link. No accounts. No hustle. Just the words.
               </p>
             </div>
           </div>

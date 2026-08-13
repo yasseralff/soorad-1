@@ -2,7 +2,13 @@ import { Heart } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 // A small wax-seal style badge with a heart, used as the product mark.
-export function SealMark({ className }: { className?: string }) {
+export function SealMark({
+  className,
+  iconClassName,
+}: {
+  className?: string
+  iconClassName?: string
+}) {
   return (
     <span
       className={cn(
@@ -12,7 +18,7 @@ export function SealMark({ className }: { className?: string }) {
       )}
       aria-hidden="true"
     >
-      <Heart className="size-6 fill-current" />
+      <Heart className={cn('h-5/12 w-5/12 fill-current', iconClassName)} />
     </span>
   )
 }
