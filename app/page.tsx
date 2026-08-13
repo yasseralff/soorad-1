@@ -14,7 +14,7 @@ export default function HomePage() {
         <SealMark className="size-16" />
 
         <p className="mt-10 font-serif text-sm uppercase tracking-[0.35em] text-muted-foreground">
-          Letters
+          Soorad
         </p>
 
         <h1 className="mt-4 text-balance font-serif text-4xl font-medium leading-tight text-foreground sm:text-5xl md:text-6xl">

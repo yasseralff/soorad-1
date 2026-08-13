@@ -28,7 +28,7 @@ export async function createLetterAction(
 ): Promise<CreateLetterResult> {
   const parsed = CreateLetterSchema.safeParse(raw)
   if (!parsed.success) {
-    return { success: false, error: parsed.error.errors[0]?.message ?? 'Invalid input.' }
+    return { success: false, error: parsed.error.issues[0]?.message ?? 'Invalid input.' }
   }
 
   const { sender, receiver, body, customCode, songUrl } = parsed.data

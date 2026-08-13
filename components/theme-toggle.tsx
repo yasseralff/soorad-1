@@ -18,9 +18,9 @@ export function ThemeToggle({ className }: { className?: string }) {
       )}
     >
       {resolvedTheme === 'dark' ? (
-        <Sun className="size-[18px]" />
+        <Sun className="size-4.5" />
       ) : (
-        <Moon className="size-[18px]" />
+        <Moon className="size-4.5" />
       )}
     </button>
   )

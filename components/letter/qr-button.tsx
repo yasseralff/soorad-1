@@ -110,7 +110,7 @@ export function QrModal({
             </div>
 
             {/* URL hint */}
-            <p className="max-w-[220px] break-all text-center font-mono text-[11px] text-muted-foreground">
+            <p className="max-w-55 break-all text-center font-mono text-[11px] text-muted-foreground">
               {url}
             </p>
 
@@ -146,7 +146,7 @@ export function QrButton({ url, receiver }: QrProps) {
         aria-label="Show QR code"
         className={btn}
       >
-        <QrCode className="size-[18px]" />
+        <QrCode className="size-4.5" />
       </button>
       <QrModal url={url} receiver={receiver} open={open} onClose={() => setOpen(false)} />
     </>

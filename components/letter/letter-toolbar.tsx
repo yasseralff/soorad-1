@@ -62,10 +62,10 @@ export function LetterToolbar({
   return (
     <div className="flex items-center gap-2 rounded-full border border-border bg-card/80 p-1.5 shadow-lg backdrop-blur">
       <Link href="/" aria-label="Back to home" className={btn}>
-        <ArrowLeft className="size-[18px]" />
+        <ArrowLeft className="size-4.5" />
       </Link>
       <button type="button" onClick={share} aria-label="Share letter" className={btn}>
-        {shared ? <Check className="size-[18px] text-accent" /> : <Share2 className="size-[18px]" />}
+        {shared ? <Check className="size-4.5 text-accent" /> : <Share2 className="size-4.5" />}
       </button>
       <button
         type="button"
@@ -74,7 +74,7 @@ export function LetterToolbar({
         aria-label="Download as image"
         className={cn(btn, downloading && 'opacity-60')}
       >
-        <Download className="size-[18px]" />
+        <Download className="size-4.5" />
       </button>
       <ThemeToggle />
     </div>
