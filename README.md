@@ -63,6 +63,14 @@ Export the letter as a PNG image.
 
 Native Share API (when supported) with clipboard fallback.
 
+### Spotify Music Integration
+
+Attach a Spotify track URL to your letter. Readers can play and listen to the song while reading to enhance the emotional atmosphere.
+
+### QR Code Sharing
+
+Generate a unique QR code for each letter, allowing readers to scan and open the letter instantly on their mobile devices.
+
 ---
 
 ## Tech Stack
