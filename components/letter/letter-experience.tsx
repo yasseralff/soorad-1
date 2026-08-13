@@ -16,6 +16,7 @@ export function LetterExperience({ letter }: { letter: Letter }) {
   const [stage, setStage] = useState<Stage>('sealed')
   const reduce = useReducedMotion()
   const paperRef = useRef<HTMLDivElement>(null)
+  const experienceRef = useRef<HTMLDivElement>(null)
 
   function open() {
     if (stage !== 'sealed') return
@@ -25,8 +26,8 @@ export function LetterExperience({ letter }: { letter: Letter }) {
   }
 
   return (
-    <div className="relative flex min-h-dvh w-full flex-col items-center justify-center px-6 py-16">
-      <div className="absolute left-6 top-6 z-20">
+    <div ref={experienceRef} className="relative flex min-h-dvh w-full flex-col items-center justify-center px-6 py-16">
+      <div className="absolute left-1/2 top-6 -translate-x-1/2 z-20">
         <Link
           href="/"
           aria-label="Go to home"
@@ -48,7 +49,7 @@ export function LetterExperience({ letter }: { letter: Letter }) {
         ) : (
           <motion.div
             key="letter"
-            className="w-full"
+            className="flex w-full flex-col items-center gap-8"
             initial={{ opacity: 0, y: reduce ? 0 : 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
@@ -56,18 +57,18 @@ export function LetterExperience({ letter }: { letter: Letter }) {
             <LetterPaper ref={paperRef} letter={letter} />
 
             {letter.songUrl ? (
-              <div className="mx-auto w-full max-w-3xl px-2">
+              <div className="w-full max-w-3xl px-2">
                 <SpotifyEmbed spotifyUrl={letter.songUrl} letterOpened={stage === 'open'} />
               </div>
             ) : null}
 
             <motion.div
-              className="sticky bottom-6 mt-10 flex justify-center"
+              className="sticky bottom-6 flex justify-center no-capture"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: reduce ? 0 : 1.4, duration: 0.5 }}
             >
-              <LetterToolbar targetRef={paperRef} receiver={letter.receiver} />
+              <LetterToolbar targetRef={experienceRef} receiver={letter.receiver} />
             </motion.div>
           </motion.div>
         )}

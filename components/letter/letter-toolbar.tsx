@@ -44,6 +44,12 @@ export function LetterToolbar({
         pixelRatio: 2,
         backgroundColor: bg,
         cacheBust: true,
+        filter: (node) => {
+          if (node instanceof HTMLElement && node.classList.contains('no-capture')) {
+            return false
+          }
+          return true
+        },
       })
       const link = document.createElement('a')
       link.download = `letter-for-${receiver.toLowerCase().replace(/\s+/g, '-')}.png`

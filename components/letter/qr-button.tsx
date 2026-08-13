@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { QRCodeSVG } from 'qrcode.react'
 import { motion, AnimatePresence } from 'motion/react'
 import { QrCode, X, Download } from 'lucide-react'
+import { toPng } from 'html-to-image'
 import { SealMark } from '@/components/seal-mark'
 
 interface QrProps {
@@ -19,7 +20,7 @@ export function QrModal({
   open,
   onClose,
 }: QrProps & { open: boolean; onClose: () => void }) {
-  const svgRef = useRef<SVGSVGElement>(null)
+  const cardRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (!open) return
@@ -30,16 +31,27 @@ export function QrModal({
     return () => window.removeEventListener('keydown', onKey)
   }, [open, onClose])
 
-  function downloadQr() {
-    const svg = svgRef.current
-    if (!svg) return
-    const serialized = new XMLSerializer().serializeToString(svg)
-    const blob = new Blob([serialized], { type: 'image/svg+xml' })
-    const a = document.createElement('a')
-    a.href = URL.createObjectURL(blob)
-    a.download = `letter-qr-${receiver.toLowerCase().replace(/\s+/g, '-')}.svg`
-    a.click()
-    URL.revokeObjectURL(a.href)
+  async function downloadQr() {
+    const card = cardRef.current
+    if (!card) return
+    try {
+      const dataUrl = await toPng(card, {
+        pixelRatio: 3,
+        cacheBust: true,
+        filter: (node) => {
+          if (node instanceof HTMLElement && node.classList.contains('no-capture')) {
+            return false
+          }
+          return true
+        },
+      })
+      const link = document.createElement('a')
+      link.download = `letter-qr-${receiver.toLowerCase().replace(/\s+/g, '-')}.png`
+      link.href = dataUrl
+      link.click()
+    } catch (e) {
+      console.error('Failed to download QR code card as PNG', e)
+    }
   }
 
   return (
@@ -59,7 +71,8 @@ export function QrModal({
 
           {/* Card — centered, constrained width */}
           <motion.div
-            className="relative z-10 mx-auto flex w-full max-w-xs flex-col items-center gap-6 rounded-3xl border border-seam bg-paper px-8 py-10 shadow-2xl"
+            ref={cardRef}
+            className="relative z-10 flex w-full max-w-xs flex-col items-center gap-6 rounded-3xl border border-seam bg-paper px-8 py-10 shadow-2xl"
             initial={{ opacity: 0, scale: 0.94, y: 16 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.94, y: 16 }}
@@ -71,7 +84,7 @@ export function QrModal({
               type="button"
               onClick={onClose}
               aria-label="Close QR code"
-              className="absolute right-4 top-4 inline-flex size-8 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="absolute right-4 top-4 inline-flex size-8 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring no-capture"
             >
               <X className="size-4" />
             </button>
@@ -94,7 +107,6 @@ export function QrModal({
               <span className="absolute bottom-1.5 left-1.5 size-3 rounded-bl border-b-2 border-l-2 border-muted-foreground/30" />
               <span className="absolute bottom-1.5 right-1.5 size-3 rounded-br border-b-2 border-r-2 border-muted-foreground/30" />
               <QRCodeSVG
-                ref={svgRef}
                 value={url}
                 size={200}
                 level="M"
@@ -118,7 +130,7 @@ export function QrModal({
             <button
               type="button"
               onClick={downloadQr}
-              className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 font-serif text-sm text-foreground transition-colors hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 font-serif text-sm text-foreground transition-colors hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring no-capture"
             >
               <Download className="size-4" />
               Save QR code
