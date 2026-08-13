@@ -1,10 +1,10 @@
 # README.md
 
-# 💌 Digital Letter
+# 💌 Soorad
 
 > Create beautiful handwritten digital letters that can be shared through a unique code or link.
 
-Digital Letter is an anonymous web application that allows anyone to create and share beautifully designed handwritten-style digital letters. Rather than focusing on productivity or messaging, the project emphasizes emotion, storytelling, and a delightful reading experience.
+Soorad is an anonymous web application that allows anyone to create and share beautifully designed handwritten-style digital letters. Rather than focusing on productivity or messaging, the project emphasizes emotion, storytelling, and a delightful reading experience.
 
 Inspired by the experience of opening a physical envelope, every interaction is designed to feel calm, intentional, and memorable.
 
