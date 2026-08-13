@@ -145,12 +145,12 @@ export function CreateLetter() {
         </div>
       </Field>
 
-      <Field label="Theme">
+      {/* <Field label="Theme">
         <div className="flex items-center gap-2 rounded-xl border border-dashed border-border bg-secondary/40 px-4 py-3 text-sm text-muted-foreground">
           <Sparkles className="size-4 text-accent" />
           Paper and ink styles are coming soon.
         </div>
-      </Field>
+      </Field> */}
 
       {error ? (
         <p className="rounded-xl border border-destructive/40 bg-destructive/10 px-4 py-3 text-sm text-destructive">
