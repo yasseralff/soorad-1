@@ -17,7 +17,7 @@ const patrickHand = Patrick_Hand({
 })
 
 export const metadata: Metadata = {
-  title: 'Letters — some words are easier written than spoken',
+  title: 'Soorad — some words are easier written than spoken',
   description:
     'Create beautiful handwritten digital letters and share them through a unique code or link.',
   generator: 'v0.app',
