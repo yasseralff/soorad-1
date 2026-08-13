@@ -38,13 +38,9 @@ export function CodeEntry() {
 
   function submit(e: React.FormEvent) {
     e.preventDefault()
-    const code = chars.join('')
-    if (code.length < LEN) {
-      setError('Please enter all six characters.')
-      return
-    }
-    if (!getLetter(code)) {
-      setError("We couldn't find a letter with that code.")
+    const code = chars.join('').trim().toUpperCase()
+    if (code.length < 4) {
+      setError('Please enter your letter code.')
       return
     }
     router.push(`/letter/${code}`)
@@ -80,7 +76,7 @@ export function CodeEntry() {
 
       <button
         type="submit"
-        className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 font-serif text-lg text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-primary px-8 py-4 font-serif text-lg text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
       >
         Open Letter
         <ArrowRight className="size-5" />
